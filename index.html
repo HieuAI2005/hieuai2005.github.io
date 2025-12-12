@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Duong Dinh Hieu - AI Engineer Intern specializing in Machine Learning, Deep Learning, Computer Vision, and NLP.">
+    <meta name="keywords" content="AI Engineer, Machine Learning, Deep Learning, Computer Vision, NLP, LLM, Portfolio">
+    <meta name="author" content="Duong Dinh Hieu">
+    <title>Duong Dinh Hieu | AI Engineer Intern</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 8s ease infinite;
+        }
+
+        /* Glass effect */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glow effect */
+        .glow {
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Skill badge hover */
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Animated background */
+        .animated-bg {
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #1e3a8a, #1e293b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Navigation active state */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Section reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-dark-950 text-gray-100 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#hero" class="text-xl md:text-2xl font-bold gradient-text">
+                    &lt;DDH /&gt;
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white transition-colors">Projects</a>
+                    <a href="#achievements"
+                        class="nav-link text-gray-300 hover:text-white transition-colors">Achievements</a>
+                    <a href="#contact"
+                        class="px-5 py-2 bg-primary-600 hover:bg-primary-700 rounded-full text-white font-medium transition-all hover:shadow-lg hover:shadow-primary-500/30">
+                        Contact
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden glass">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#about" class="block py-2 text-gray-300 hover:text-white transition-colors">About</a>
+                <a href="#skills" class="block py-2 text-gray-300 hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="block py-2 text-gray-300 hover:text-white transition-colors">Projects</a>
+                <a href="#achievements"
+                    class="block py-2 text-gray-300 hover:text-white transition-colors">Achievements</a>
+                <a href="#contact"
+                    class="block py-2 text-primary-400 hover:text-primary-300 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center animated-bg overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="particle w-64 h-64 -top-32 -left-32 opacity-20"></div>
+            <div class="particle w-96 h-96 -bottom-48 -right-48 opacity-10" style="animation-delay: 2s;"></div>
+            <div class="particle w-48 h-48 top-1/2 left-1/4 opacity-15" style="animation-delay: 4s;"></div>
+        </div>
+
+        <!-- Grid pattern overlay -->
+        <div class="absolute inset-0 opacity-5"
+            style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%239C92AC&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Profile Avatar -->
+            <div class="mb-8 animate-float">
+                <div
+                    class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full bg-gradient-to-br from-primary-500 via-purple-500 to-cyan-500 p-1 glow">
+                    <img src="./Hieu.JPG" alt="Duong Dinh Hieu" class="w-full h-full rounded-full object-cover">
+                </div>
+            </div>
+
+            <!-- Name & Title -->
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
+                <span class="text-white">Hi, I'm </span>
+                <span class="gradient-text">Duong Dinh Hieu</span>
+            </h1>
+
+            <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6">
+                <span class="px-4 py-2 glass rounded-full text-primary-400 font-medium text-sm md:text-base">
+                    <i class="fas fa-brain mr-2"></i>AI Engineer Intern
+                </span>
+                <span class="px-4 py-2 glass rounded-full text-purple-400 font-medium text-sm md:text-base">
+                    <i class="fas fa-graduation-cap mr-2"></i>AI Student at FPT University
+                </span>
+            </div>
+
+            <!-- Tagline -->
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
+                Specializing in <span class="text-primary-400 font-medium">Machine Learning</span>,
+                <span class="text-purple-400 font-medium">Deep Learning</span>,
+                <span class="text-cyan-400 font-medium">Computer Vision</span>, and
+                <span class="text-pink-400 font-medium">NLP</span>.
+                Passionate about <span class="text-yellow-400 font-medium">Large Language Models (LLMs)</span> and
+                efficient
+                <span class="text-green-400 font-medium">Small Language Models</span> for Vietnamese.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+                <a href="#projects"
+                    class="group px-8 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/30 flex items-center gap-2">
+                    <i class="fas fa-rocket group-hover:animate-bounce"></i>
+                    View Projects
+                </a>
+                <a href="#contact"
+                    class="px-8 py-3 glass hover:bg-white/10 rounded-full text-white font-semibold transition-all duration-300 flex items-center gap-2">
+                    <i class="fas fa-envelope"></i>
+                    Contact Me
+                </a>
+                <a href="./cv.pdf" download
+                    class="px-8 py-3 border-2 border-primary-500 hover:bg-primary-500/20 rounded-full text-primary-400 hover:text-white font-semibold transition-all duration-300 flex items-center gap-2">
+                    <i class="fas fa-download"></i>
+                    Download CV
+                </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center justify-center gap-6">
+                <a href="https://github.com/HieuAI2005" target="_blank"
+                    class="w-12 h-12 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600/50 transition-all duration-300 hover:scale-110">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="mailto:hieuai0305@gmail.com"
+                    class="w-12 h-12 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600/50 transition-all duration-300 hover:scale-110">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+                <span class="px-4 py-2 glass rounded-full text-gray-400 flex items-center gap-2">
+                    <i class="fas fa-map-marker-alt text-primary-400"></i>
+                    Hanoi, Vietnam
+                </span>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-32 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="text-primary-400 font-mono text-sm tracking-wider uppercase">Get to know me</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mt-2 gradient-text">About Me</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- About Content -->
+                    <div class="space-y-6">
+                        <div class="glass rounded-2xl p-6 md:p-8">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary-600/20 flex items-center justify-center">
+                                    <i class="fas fa-user text-primary-400"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white">Who I Am</h3>
+                            </div>
+                            <p class="text-gray-400 leading-relaxed">
+                                AI student with a <span class="text-primary-400">strong foundation in Machine Learning
+                                    and Deep Learning</span>.
+                                I have hands-on experience in <span class="text-purple-400">Computer Vision</span> and
+                                <span class="text-cyan-400">Natural Language Processing</span> projects. I am skilled in
+                                reading and
+                                implementing research papers and adapting to new technologies quickly.
+                            </p>
+                        </div>
+
+                        <!-- Quick Stats -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="glass rounded-xl p-5 text-center card-hover">
+                                <div class="text-3xl font-bold gradient-text mb-1">5+</div>
+                                <div class="text-gray-400 text-sm">Projects Completed</div>
+                            </div>
+                            <div class="glass rounded-xl p-5 text-center card-hover">
+                                <div class="text-3xl font-bold gradient-text mb-1">2+</div>
+                                <div class="text-gray-400 text-sm">Years Learning AI</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="glass rounded-2xl p-6 md:p-8 card-hover">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-full bg-purple-600/20 flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-purple-400"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white">Education</h3>
+                        </div>
+
+                        <div class="relative pl-6 border-l-2 border-primary-500/30">
+                            <div class="absolute -left-2.5 top-0 w-5 h-5 rounded-full bg-primary-500 glow"></div>
+                            <div class="mb-2">
+                                <span class="text-primary-400 font-mono text-sm">2023 - Present</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-white mb-2">FPT University</h4>
+                            <p class="text-gray-400">
+                                <i class="fas fa-book-open text-primary-400 mr-2"></i>
+                                Bachelor of Information Technology
+                            </p>
+                            <p class="text-gray-400">
+                                <i class="fas fa-brain text-purple-400 mr-2"></i>
+                                Major: Artificial Intelligence
+                            </p>
+                        </div>
+
+                        <!-- Tech Stack Preview -->
+                        <div class="mt-8 pt-6 border-t border-white/10">
+                            <p class="text-gray-400 text-sm mb-4">Currently working with:</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">Python</span>
+                                <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">PyTorch</span>
+                                <span
+                                    class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-sm">HuggingFace</span>
+                                <span
+                                    class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Transformers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 md:py-32 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="text-primary-400 font-mono text-sm tracking-wider uppercase">What I Can Do</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mt-2 gradient-text">Skills & Technologies</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Programming -->
+                    <div class="glass rounded-2xl p-6 card-hover">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center mb-5 glow">
+                            <i class="fas fa-code text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Programming</h3>
+                        <div class="space-y-3">
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fab fa-python text-yellow-400 text-xl"></i>
+                                <span class="text-gray-300">Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI/ML Core -->
+                    <div class="glass rounded-2xl p-6 card-hover">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-purple-500 flex items-center justify-center mb-5 glow">
+                            <i class="fas fa-brain text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">AI/ML Core</h3>
+                        <div class="space-y-3">
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-eye text-blue-400"></i>
+                                <span class="text-gray-300">Object Detection</span>
+                            </div>
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-language text-purple-400"></i>
+                                <span class="text-gray-300">BERT & Transformers</span>
+                            </div>
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-cube text-cyan-400"></i>
+                                <span class="text-gray-300">Embedding Models</span>
+                            </div>
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-database text-green-400"></i>
+                                <span class="text-gray-300">FAISS & Qdrant</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="glass rounded-2xl p-6 card-hover">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 flex items-center justify-center mb-5 glow">
+                            <i class="fas fa-tools text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Tools</h3>
+                        <div class="space-y-3">
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fab fa-git-alt text-orange-400 text-xl"></i>
+                                <span class="text-gray-300">Git/GitHub</span>
+                            </div>
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-book text-orange-500"></i>
+                                <span class="text-gray-300">Jupyter Notebook</span>
+                            </div>
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-laptop-code text-blue-500"></i>
+                                <span class="text-gray-300">VS Code</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="glass rounded-2xl p-6 card-hover">
+                        <div
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center mb-5 glow">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Soft Skills</h3>
+                        <div class="space-y-3">
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-clock text-pink-400"></i>
+                                <span class="text-gray-300">Time Management</span>
+                            </div>
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-puzzle-piece text-rose-400"></i>
+                                <span class="text-gray-300">Problem-solving</span>
+                            </div>
+                            <div
+                                class="skill-badge flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl cursor-default">
+                                <i class="fas fa-search text-red-400"></i>
+                                <span class="text-gray-300">Research & Implementation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 md:py-32 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="text-primary-400 font-mono text-sm tracking-wider uppercase">My Work</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mt-2 gradient-text">Featured Projects</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1: DocBot -->
+                    <article class="group glass rounded-2xl overflow-hidden card-hover">
+                        <div
+                            class="relative h-48 bg-gradient-to-br from-primary-600 to-purple-600 flex items-center justify-center overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300">
+                            </div>
+                            <i
+                                class="fas fa-robot text-6xl text-white/80 group-hover:scale-110 transition-transform duration-300"></i>
+                            <div
+                                class="absolute top-4 right-4 px-3 py-1 bg-black/30 rounded-full text-xs text-white font-mono">
+                                09/2025 - 12/2025
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3
+                                class="text-xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
+                                DocBot - AI-Powered Document Q&A System
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                An Adaptive RAG pipeline combining BM25 and Dense Retrieval (multilingual-e5-small).
+                                Leveraged Qwen 2.5 (1.5B) for multilingual reasoning with Chain-of-Thought prompting.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-primary-500/20 text-primary-400 rounded-full text-xs font-medium">Generative
+                                    AI</span>
+                                <span
+                                    class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">RAG</span>
+                                <span
+                                    class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium">SLMs</span>
+                                <span
+                                    class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">FAISS</span>
+                                <span
+                                    class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-xs font-medium">Qwen
+                                    2.5</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Document Intelligence System -->
+                    <article class="group glass rounded-2xl overflow-hidden card-hover">
+                        <div
+                            class="relative h-48 bg-gradient-to-br from-cyan-600 to-teal-600 flex items-center justify-center overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300">
+                            </div>
+                            <i
+                                class="fas fa-file-invoice text-6xl text-white/80 group-hover:scale-110 transition-transform duration-300"></i>
+                            <div
+                                class="absolute top-4 right-4 px-3 py-1 bg-black/30 rounded-full text-xs text-white font-mono">
+                                02/2025 - 05/2025
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                                Document Intelligence System for Electronic Invoices
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                End-to-end pipeline for multilingual invoice understanding. Implemented image
+                                preprocessing,
+                                trained Detectron2 (AP ~0.94), and reconstructed table structures using GNN.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-xs font-medium">Computer
+                                    Vision</span>
+                                <span
+                                    class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs font-medium">SLMs</span>
+                                <span
+                                    class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium">Detectron2</span>
+                                <span
+                                    class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">PaddleOCR</span>
+                                <span
+                                    class="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-xs font-medium">GNN</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Key-Value Extraction -->
+                    <article class="group glass rounded-2xl overflow-hidden card-hover">
+                        <div
+                            class="relative h-48 bg-gradient-to-br from-pink-600 to-rose-600 flex items-center justify-center overflow-hidden">
+                            <div
+                                class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300">
+                            </div>
+                            <i
+                                class="fas fa-file-alt text-6xl text-white/80 group-hover:scale-110 transition-transform duration-300"></i>
+                            <div
+                                class="absolute top-4 right-4 px-3 py-1 bg-black/30 rounded-full text-xs text-white font-mono">
+                                06/2025 - 08/2025
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-pink-400 transition-colors">
+                                Key-Value Extraction from Vietnamese Documents
+                            </h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                Fine-tuned RoBERTa for NER (F1 0.95). Designed end-to-end IDP pipeline with
+                                normalization,
+                                BIO tagging, and BPE tokenization for Vietnamese administrative documents.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-xs font-medium">NLP</span>
+                                <span
+                                    class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">RoBERTa</span>
+                                <span
+                                    class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-xs font-medium">PyTorch</span>
+                                <span
+                                    class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-xs font-medium">HuggingFace</span>
+                                <span
+                                    class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">Seqeval</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Interests Section -->
+    <section id="achievements" class="py-20 md:py-32 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span class="text-primary-400 font-mono text-sm tracking-wider uppercase">Beyond Coding</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mt-2 gradient-text">Achievements & Interests</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Achievements -->
+                    <div class="glass rounded-2xl p-8 card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-500 flex items-center justify-center glow">
+                                <i class="fas fa-trophy text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Achievements</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-xl">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fab fa-kaggle text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">Kaggle Notebook Expert</h4>
+                                    <p class="text-gray-400 text-sm">Recognized for quality data science notebooks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interests -->
+                    <div class="glass rounded-2xl p-8 card-hover">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center glow">
+                                <i class="fas fa-heart text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Interests</h3>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-book-reader text-purple-400 text-xl"></i>
+                                </div>
+                                <span class="text-gray-300 text-sm">Reading Papers</span>
+                            </div>
+                            <div class="text-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-futbol text-green-400 text-xl"></i>
+                                </div>
+                                <span class="text-gray-300 text-sm">Football</span>
+                            </div>
+                            <div class="text-center p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-music text-pink-400 text-xl"></i>
+                                </div>
+                                <span class="text-gray-300 text-sm">Music</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32 bg-dark-900 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="particle w-96 h-96 -top-48 -right-48 opacity-10"></div>
+            <div class="particle w-64 h-64 -bottom-32 -left-32 opacity-15" style="animation-delay: 3s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal text-center">
+                <!-- Section Header -->
+                <span class="text-primary-400 font-mono text-sm tracking-wider uppercase">Get In Touch</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-6 gradient-text">Let's Work Together</h2>
+                <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
+                    I'm currently looking for AI Engineer internship opportunities.
+                    Feel free to reach out if you have any questions or just want to say hi!
+                </p>
+
+                <!-- Contact Cards -->
+                <div class="grid sm:grid-cols-3 gap-6 mb-12">
+                    <a href="mailto:hieuai0305@gmail.com" class="group glass rounded-2xl p-6 card-hover text-center">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold mb-2">Email</h4>
+                        <p class="text-gray-400 text-sm break-all">hieuai0305@gmail.com</p>
+                    </a>
+
+                    <a href="https://github.com/HieuAI2005" target="_blank"
+                        class="group glass rounded-2xl p-6 card-hover text-center">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <i class="fab fa-github text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold mb-2">GitHub</h4>
+                        <p class="text-gray-400 text-sm">@HieuAI2005</p>
+                    </a>
+
+                    <div class="glass rounded-2xl p-6 card-hover text-center">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gradient-to-br from-primary-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-map-marker-alt text-2xl text-white"></i>
+                        </div>
+                        <h4 class="text-white font-semibold mb-2">Location</h4>
+                        <p class="text-gray-400 text-sm">Hanoi, Vietnam</p>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="mailto:hieuai0305@gmail.com"
+                    class="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-500 hover:to-purple-500 rounded-full text-white font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/30 hover:scale-105">
+                    <i class="fas fa-paper-plane"></i>
+                    Send Message
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-dark-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-gray-400 text-sm">
+                    &copy; 2025 <span class="text-white">Duong Dinh Hieu</span>. All rights reserved.
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://github.com/HieuAI2005" target="_blank"
+                        class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="mailto:hieuai0305@gmail.com" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-envelope text-lg"></i>
+                    </a>
+                </div>
+                <div class="text-gray-500 text-sm font-mono">
+                    Made with <i class="fas fa-heart text-red-500"></i> & <i class="fas fa-coffee text-amber-500"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('glass', 'shadow-lg');
+            } else {
+                navbar.classList.remove('glass', 'shadow-lg');
+            }
+        });
+
+        // Reveal animation on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Active navigation link highlight
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-white');
+                link.classList.add('text-gray-300');
+
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-300');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
